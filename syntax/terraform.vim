@@ -58,10 +58,12 @@ syn keyword terraValueNull      null
 " enable block folding
 syn region terraBlockBody matchgroup=terraBraces start="{" end="}" fold transparent
 
-syn match terraMod   "\v\{\zsmodule\ze\.\w+"
+"syn match terraMod   "\v\{\zsmodule\ze\.\w+"
 syn match terraMod   "\v\s{-}\zsmodule\ze\.\w+"
-
 syn match terraData "\v\s{-}\zsdata\ze\.\w+"
+
+syn match terraAwsReserved "aws_"
+"syn match terraAwsReserved "\v\s{-}\zsaws_\ze\w+\.\w+\.\w+"
 
 hi def link terraComment           Comment
 hi def link terraTodo              Todo
@@ -80,7 +82,8 @@ hi def link terraConditional       Conditional
 hi def link terraType              Type
 hi def link terraValueNull         Constant
 hi def link terraMod               Identifier
-hi def link terraData               Identifier
+hi def link terraData              Identifier
+hi def link terraAwsReserved       Identifier
 
 let b:current_syntax = 'terraform'
 
